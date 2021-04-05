@@ -1,178 +1,122 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player/reva.glb" type="PackedScene" id=1]
 [ext_resource path="res://Player/scripts/Reva.gd" type="Script" id=2]
 [ext_resource path="res://Player/audio/jumpland.wav" type="AudioStream" id=3]
-[ext_resource path="res://Player/audio/stepstone_2.wav" type="AudioStream" id=4]
 
-[sub_resource type="CapsuleShape" id=20]
-radius = 0.235804
-height = 0.420509
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.289779
+height = 0.383189
 
-[sub_resource type="AnimationNodeAnimation" id=2]
-animation = "jump end "
+[sub_resource type="RayShape" id=2]
 
 [sub_resource type="AnimationNodeAnimation" id=3]
-animation = "end jump loop"
+animation = "jump end "
 
 [sub_resource type="AnimationNodeAnimation" id=4]
-animation = "throw object"
-
-[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "standing jump start"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "standing jump end"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "jump start "
 
-[sub_resource type="AnimationNodeOneShot" id=8]
-
-[sub_resource type="AnimationNodeBlend2" id=9]
-filter_enabled = true
-filters = [ "Armature/Skeleton:arm_l", "Armature/Skeleton:arm_r", "Armature/Skeleton:fore_arm_l", "Armature/Skeleton:fore_arm_r", "Armature/Skeleton:hand_index_1_l", "Armature/Skeleton:hand_index_1_r", "Armature/Skeleton:hand_index_2_l", "Armature/Skeleton:hand_index_2_r", "Armature/Skeleton:hand_index_3_l", "Armature/Skeleton:hand_index_3_r", "Armature/Skeleton:hand_index_4_l", "Armature/Skeleton:hand_index_4_r", "Armature/Skeleton:hand_l", "Armature/Skeleton:hand_middle_1_l", "Armature/Skeleton:hand_middle_1_r", "Armature/Skeleton:hand_middle_2_l", "Armature/Skeleton:hand_middle_2_r", "Armature/Skeleton:hand_middle_3_l", "Armature/Skeleton:hand_middle_3_r", "Armature/Skeleton:hand_middle_4_l", "Armature/Skeleton:hand_middle_4_r", "Armature/Skeleton:hand_pinky_1_l", "Armature/Skeleton:hand_pinky_1_r", "Armature/Skeleton:hand_pinky_2_l", "Armature/Skeleton:hand_pinky_2_r", "Armature/Skeleton:hand_pinky_3_l", "Armature/Skeleton:hand_pinky_3_r", "Armature/Skeleton:hand_pinky_4_l", "Armature/Skeleton:hand_pinky_4_r", "Armature/Skeleton:hand_r", "Armature/Skeleton:hand_ring_1_l", "Armature/Skeleton:hand_ring_1_r", "Armature/Skeleton:hand_ring_2_l", "Armature/Skeleton:hand_ring_2_r", "Armature/Skeleton:hand_ring_3_l", "Armature/Skeleton:hand_ring_3_r", "Armature/Skeleton:hand_ring_4_l", "Armature/Skeleton:hand_ring_4_r", "Armature/Skeleton:hand_thumb_1_l", "Armature/Skeleton:hand_thumb_1_r", "Armature/Skeleton:hand_thumb_2_l", "Armature/Skeleton:hand_thumb_2_r", "Armature/Skeleton:hand_thumb_3_l", "Armature/Skeleton:hand_thumb_3_r", "Armature/Skeleton:hand_thumb_4_l", "Armature/Skeleton:hand_thumb_4_r", "Armature/Skeleton:head", "Armature/Skeleton:head_top_end", "Armature/Skeleton:hips", "Armature/Skeleton:neck", "Armature/Skeleton:root", "Armature/Skeleton:shoulder_l", "Armature/Skeleton:shoulder_r", "Armature/Skeleton:spine", "Armature/Skeleton:spine_1", "Armature/Skeleton:spine_2" ]
-
-[sub_resource type="AnimationNodeAnimation" id=10]
-animation = "start throw object"
-
-[sub_resource type="AnimationNodeOneShot" id=11]
-
-[sub_resource type="AnimationNodeTransition" id=12]
+[sub_resource type="AnimationNodeTransition" id=7]
 input_count = 5
 input_0/name = "walk"
 input_0/auto_advance = false
-input_1/name = "jump_start"
+input_1/name = "jump run start"
 input_1/auto_advance = false
-input_2/name = "jump land"
+input_2/name = "jump run end"
 input_2/auto_advance = false
-input_3/name = "standing jump start"
+input_3/name = "stand jump start"
 input_3/auto_advance = false
-input_4/name = "standing jump end"
+input_4/name = "stand jump end"
 input_4/auto_advance = false
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "game idle loop"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
-animation = "fast run loop"
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "running loop"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
-animation = "fast run loop"
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "running loop"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
-animation = "fast run loop"
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "running loop"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
-animation = "fast run loop"
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "running loop"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=18]
-blend_point_0/node = SubResource( 13 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=13]
+blend_point_0/node = SubResource( 8 )
 blend_point_0/pos = Vector2( 0, 0 )
-blend_point_1/node = SubResource( 14 )
-blend_point_1/pos = Vector2( 0, 0.9 )
-blend_point_2/node = SubResource( 15 )
-blend_point_2/pos = Vector2( 0.9, 0 )
-blend_point_3/node = SubResource( 16 )
-blend_point_3/pos = Vector2( -0.9, 0 )
-blend_point_4/node = SubResource( 17 )
-blend_point_4/pos = Vector2( 0, -0.9 )
+blend_point_1/node = SubResource( 9 )
+blend_point_1/pos = Vector2( -0.9, 0 )
+blend_point_2/node = SubResource( 10 )
+blend_point_2/pos = Vector2( 0, -0.9 )
+blend_point_3/node = SubResource( 11 )
+blend_point_3/pos = Vector2( 0.9, 0 )
+blend_point_4/node = SubResource( 12 )
+blend_point_4/pos = Vector2( 0, 0.9 )
 
-[sub_resource type="AnimationNodeBlendTree" id=19]
-graph_offset = Vector2( 321.287, 216.5 )
-nodes/Animation/node = SubResource( 7 )
-nodes/Animation/position = Vector2( -40, 120 )
-"nodes/Animation 2/node" = SubResource( 2 )
-"nodes/Animation 2/position" = Vector2( 40, 260 )
-"nodes/Animation 3/node" = SubResource( 3 )
-"nodes/Animation 3/position" = Vector2( 380, 600 )
-"nodes/Animation 4/node" = SubResource( 4 )
-"nodes/Animation 4/position" = Vector2( 780, 440 )
-"nodes/Animation 5/node" = SubResource( 5 )
-"nodes/Animation 5/position" = Vector2( -80, 440 )
-"nodes/Animation 6/node" = SubResource( 6 )
-"nodes/Animation 6/position" = Vector2( 160, 480 )
-nodes/land/node = SubResource( 8 )
-nodes/land/position = Vector2( 620, 240 )
-nodes/output/position = Vector2( 1400, 200 )
-nodes/start_throw/node = SubResource( 9 )
-nodes/start_throw/position = Vector2( 820, 180 )
-nodes/throw/node = SubResource( 10 )
-nodes/throw/position = Vector2( 600, 560 )
-nodes/throwing/node = SubResource( 11 )
-nodes/throwing/position = Vector2( 1020, 240 )
-nodes/transition/node = SubResource( 12 )
-nodes/transition/position = Vector2( 440, -60 )
-nodes/walk/node = SubResource( 18 )
-nodes/walk/position = Vector2( 120, -100 )
-node_connections = [ "output", 0, "throwing", "transition", 0, "walk", "transition", 1, "Animation", "transition", 2, "Animation 2", "transition", 3, "Animation 5", "transition", 4, "Animation 6", "land", 0, "transition", "land", 1, "Animation 3", "start_throw", 0, "land", "start_throw", 1, "throw", "throwing", 0, "start_throw", "throwing", 1, "Animation 4" ]
+[sub_resource type="AnimationNodeBlendTree" id=14]
+graph_offset = Vector2( 178.344, 58 )
+nodes/Animation/node = SubResource( 6 )
+nodes/Animation/position = Vector2( -280, 180 )
+"nodes/Animation 2/node" = SubResource( 3 )
+"nodes/Animation 2/position" = Vector2( -300, 320 )
+"nodes/Animation 3/node" = SubResource( 4 )
+"nodes/Animation 3/position" = Vector2( -460, 480 )
+"nodes/Animation 4/node" = SubResource( 5 )
+"nodes/Animation 4/position" = Vector2( -160, 420 )
+nodes/transition/node = SubResource( 7 )
+nodes/transition/position = Vector2( 0, 20 )
+nodes/walk/node = SubResource( 13 )
+nodes/walk/position = Vector2( -340, -40 )
+node_connections = [ "output", 0, "transition", "transition", 0, "walk", "transition", 1, "Animation", "transition", 2, "Animation 2", "transition", 3, "Animation 3", "transition", 4, "Animation 4" ]
 
-[sub_resource type="RayShape" id=21]
-
-[node name="player" type="KinematicBody"]
-collision_layer = 2
-collision_mask = 3
+[node name="KinematicBody" type="KinematicBody"]
 script = ExtResource( 2 )
 
 [node name="reva" parent="." instance=ExtResource( 1 )]
 
-[node name="Skeleton" parent="reva/Armature" index="0"]
-bones/11/bound_children = [ NodePath("rope") ]
-
 [node name="Eyelashes" parent="reva/Armature/Skeleton" index="2"]
 visible = false
 
-[node name="rope" type="BoneAttachment" parent="reva/Armature/Skeleton" index="7"]
-transform = Transform( 0.76303, 0.264693, -0.58968, -0.296624, -0.66717, -0.6833, -0.574281, 0.696291, -0.430557, 0.243586, 0.901089, 0.0350523 )
-bone_name = "hand_l"
-
-[node name="AnimationPlayer" parent="reva" index="1"]
-autoplay = "idle loby loop"
-
 [node name="body" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.20088, 0 )
-shape = SubResource( 20 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.2, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1, 0 )
+shape = SubResource( 2 )
 
 [node name="animation_tree" type="AnimationTree" parent="."]
-tree_root = SubResource( 19 )
+tree_root = SubResource( 14 )
 anim_player = NodePath("../reva/AnimationPlayer")
 active = true
 root_motion_track = NodePath("Armature/Skeleton:root")
-parameters/land/active = false
-parameters/start_throw/blend_amount = 0.0
-parameters/throwing/active = false
 parameters/transition/current = 0
 parameters/walk/blend_position = Vector2( 0, 0 )
 
-[node name="root_motion_view" type="RootMotionView" parent="."]
-animation_path = NodePath("../animation_tree")
-
 [node name="camera" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01676, 0 )
 
 [node name="camera_base" type="Spatial" parent="camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999546, 0 )
 
 [node name="SpringArm" type="SpringArm" parent="camera/camera_base"]
-transform = Transform( -1, 0, -3.25841e-07, -7.5419e-08, 0.972845, 0.231459, 3.16993e-07, 0.231459, -0.972845, 0, 0.429, 0 )
+transform = Transform( -1, 0, -3.25841e-07, -1.2739e-07, 0.920409, 0.390956, 2.99907e-07, 0.390956, -0.920409, 0, 0.460421, -0.124276 )
 spring_length = 2.0
 
 [node name="Camera" type="Camera" parent="camera/camera_base/SpringArm"]
-
-[node name="foot" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1, 0 )
-shape = SubResource( 21 )
-
-[node name="detection" type="Spatial" parent="."]
-
-[node name="ui" type="Node2D" parent="."]
 
 [node name="audio" type="Spatial" parent="."]
 
 [node name="land" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource( 3 )
-
-[node name="step" type="AudioStreamPlayer" parent="audio"]
-stream = ExtResource( 4 )
-volume_db = -25.0
+volume_db = 20.0
 
 [editable path="reva"]

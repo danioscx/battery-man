@@ -70,6 +70,8 @@ func _physics_process(delta: float) -> void:
 		if airborne_time > 0.5:
 			land.play()
 		airborne_time = 0
+	if airborne_time > 1.2:
+		print("fly")
 	
 	var on_air = airborne_time > MIN_AIRBORNE_TIME
 	if not on_air and Input.is_action_just_pressed("jump"):
@@ -105,8 +107,7 @@ func _physics_process(delta: float) -> void:
 		root_motion = animation_tree.get_root_motion_transform()
 	
 	orientation *= root_motion
-	var elt = delta - 0.012
-	var h_velocity = orientation.origin / elt
+	var h_velocity = orientation.origin / delta
 	velocity.x = h_velocity.x
 	velocity.z = h_velocity.z
 	velocity.y += gravity * delta
